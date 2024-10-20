@@ -9,10 +9,60 @@ html
     width: 100vw
     height: 100vh
     font-family: Arial, Helvetica, sans-serif
+    overflow-x: hidden
 
     body
         margin: 0px
         padding: 0px
+        position: relative
+
+        .favorite-list-wrapper
+            width: 240px
+            position: absolute
+            top: 20px
+            right: 20px
+
+            .favorite-button
+                position: relative
+                z-index: 99
+                background-color: #124E66
+                border-radius: 15px
+                padding: 10px
+                text-align: center
+                box-shadow: 0 5px 30px -5px rgba(0,0,0,0.5)
+
+                &:hover 
+                    cursor: pointer
+            
+            .favorite-list
+                display: none
+                border-radius: 15px
+                list-style: none
+                background-color: #124E66
+                padding: 20px
+                position: relative
+                z-index: 999
+                box-shadow: 0 5px 30px -5px rgba(0,0,0,0.5)
+
+                .favorite-list-item
+                    overflow: hidden
+                    position: relative
+                    margin-bottom: 10px
+
+                    img
+                        height: 100%
+                        width: 100%
+                        border-radius: 15px
+
+                    p
+                        width: calc(100% - 20px)
+                        padding: 10px
+                        background-color: rgba(0, 0, 0, 0.6)
+                        position: absolute
+                        bottom: 4px
+                        left: 0
+                        border-bottom-left-radius: 15px
+                        border-bottom-right-radius: 15px
 
         .go-back
             top: 50px
@@ -28,6 +78,8 @@ html
 
         h1, h2, h3, h4, p, a
             color: $text-color
+            margin: 0
+            padding: 0
 
         .movie-collection-preview
             overflow: hidden
@@ -61,12 +113,12 @@ html
                     text-shadow: 2px 2px #212A31
                     font-size: 50px
 
-                p
-                    margin: 0
-                    margin-bottom: 50px
+                p.movie-tagline
+                    margin-bottom: 35px
                     font-size: 14px
 
-                .movie-details
+                a.movie-details
+                    border-radius: 15px
                     border: none
                     background-color: #124E66
                     color: $text-color
@@ -74,6 +126,11 @@ html
                     font-weight: bold
                     font-size: 16px
                     text-decoration: none
+                    transition: all ease-in-out .3s
+
+                    &:hover
+                        background-color: $text-color
+                        color: #124E66
 
         .movie-collection-wrapper
             margin-top: 25px
@@ -86,10 +143,12 @@ html
             .movie-collection-section
                 border-bottom: 1px solid $text-color
                 padding-bottom: 20px
+                margin-bottom: 40px
 
                 h3
                     font-size: 25px
                     color: $text-color
+                    margin-bottom: 10px
 
                 .scroll-container
                     position: relative
@@ -101,8 +160,8 @@ html
                         list-style: none
                         padding: 0
                         margin: 0
-                        overflow-x: hidden // Hide the horizontal scrollbar since we'll use buttons to scroll
-                        scroll-behavior: smooth // Smooth scroll effect
+                        overflow-x: hidden 
+                        scroll-behavior: smooth 
                         white-space: nowrap
                         flex-shrink: 0
                         transition: transform 0.3s ease
@@ -200,6 +259,7 @@ html
 
             img.single-movie-poster
                 width: 30vw
+                border-radius: 15px
                 height: auto
                 box-shadow: 0 5px 30px -5px rgba(0,0,0,0.5)
 
@@ -214,6 +274,9 @@ html
 
                     .single-movie-info-left
                         width: 50%
+
+                        h1, h3, p
+                            margin: 10px 0px
 
                         .single-movie-desc
                             padding-right: 20px

@@ -20,7 +20,8 @@ class MovieController
         $this->sessionController = new SessionController();
     }
 
-    public function view($id) {
+    public function single_movie_view($id) {
+        $favorites = $this->sessionController->getSessionData();
         $movie = $this->model->getMovieById($id);
         $videos = $this->videoController->get_videos_by_movie_id($id);
         $people = $this->peopleController->get_people_by_movie_id($id);
@@ -31,7 +32,7 @@ class MovieController
                 break; 
             }
         }
-        //require_once 'app/views/SingleMovie.php';
+    
         if ($movie) {
             require_once 'app/views/SingleMovie.php';
         } else {
@@ -44,18 +45,22 @@ class MovieController
         $action = $this->model->getMoviesByGenre( 28);
         $comedy = $this->model->getMoviesByGenre( 35);
         $thriller = $this->model->getMoviesByGenre( 53);
+        $war = $this->model->getMoviesByGenre(10752);
+        $romance = $this->model->getMoviesByGenre(10749);
+        $drama = $this->model->getMoviesByGenre(18);
+        $crime = $this->model->getMoviesByGenre(80);
+        $doc = $this->model->getMoviesByGenre(99);
         $horror = $this->model->getMoviesByGenre(27);
-
-        //war = 10752
-        //romance = 10749
-        //Drama = 18
-        //crime = 80
-        //doc = 99
 
         $movies = [
             'Action' => $action,
             'Comedy' => $comedy,
             'Thriller' => $thriller,
+            'War' => $war,
+            'Romance' => $romance,
+            'Drama' => $drama,
+            'Crime' => $crime,
+            'Documentary' => $doc,
             'Horror' => $horror
         ];
 

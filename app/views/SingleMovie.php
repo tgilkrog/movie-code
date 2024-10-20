@@ -5,9 +5,31 @@
     <meta charset="UTF-8">
     <title>Single Movie</title>
     <link rel="stylesheet" type="text/css" href="/Wexo-code/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
+<div class="favorite-list-wrapper">
+        <p class="favorite-button">Favorites <i class="fa-solid fa-heart"></i></p>
+            <ul class="favorite-list">
+                <?php 
+                if($favorites){ 
+                    foreach ($favorites as $favorite) {
+                        if(is_array($favorite)){ ?>
+                            <li class="favorite-list-item">
+                                <img src="https://image.tmdb.org/t/p/original<?php echo $favorite['movie_poster']; ?>" />
+                                <p><?php echo $favorite['movie_title'];?></p>
+                            </li>
+               <?php    } 
+                    }
+                } 
+                else{ ?>
+                    <p>You have no favorites yet</p>
+                <?php }
+                ?>
+            </ul>
+    </div>
     <a class="go-back" href="/Wexo-code/">Go Back</a>
     <div class="movie-collection-single-wrapper">
         <img class="single-movie-hero" src="https://image.tmdb.org/t/p/original/<?php echo $movie['backdrop_path'] ?>" />
@@ -60,6 +82,7 @@
 
         </div>
     </div>
+    <script src="../public/js/script.js"></script>
 </body>
 
 </html>

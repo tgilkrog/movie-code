@@ -16,10 +16,10 @@ class Router
                 error_log("Movie path matched.");
                 require_once 'app/controllers/MovieController.php';
                 $controller = new MovieController();
-                $controller->view($id); 
+                $controller->single_movie_view($id); 
                 break;
 
-            case 'ajax/fetchMovieById':
+            case 'ajax/movieajax':
                 require_once 'app/ajax/MovieAjax.php';
                 break;
 

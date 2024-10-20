@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 break;
 
+            case 'get_favorite_list':
+                echo json_encode($sessionController->getSessionData());
+
             default:
                 echo json_encode(['error' => 'Invalid action.']);
                 break;

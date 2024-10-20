@@ -10,6 +10,26 @@
 </head>
 
 <body>
+    <div class="favorite-list-wrapper">
+        <p class="favorite-button">Favorites <i class="fa-solid fa-heart"></i></p>
+            <ul class="favorite-list">
+                <?php 
+                if($favorites){ 
+                    foreach ($favorites as $favorite) {
+                        if(is_array($favorite)){ ?>
+                            <li class="favorite-list-item">
+                                <img src="https://image.tmdb.org/t/p/original<?php echo $favorite['movie_poster']; ?>" />
+                                <p><?php echo $favorite['movie_title'];?></p>
+                            </li>
+               <?php    } 
+                    }
+                } 
+                else{ ?>
+                    <p>You have no favorites yet</p>
+                <?php }
+                ?>
+            </ul>
+    </div>
     <div class="movie-collection-preview">
         <img src="https://image.tmdb.org/t/p/original/<?php echo $hero['backdrop_path'] ?>" />
         <div class="movie-collection-preview-content">
@@ -30,14 +50,17 @@
                     <ul class="movie-collection-list">
                         <?php foreach ($mov['results'] as $movie): ?>
                             <?php 
-                            if(isset($favorites)){
-                                $heart_to_show = in_array($movie['id'], $favorites) ? 'fa-solid fa-heart movie-heart liked' : 'fa-regular fa-heart movie-heart not-liked';
-                            }
-                            else{
+                            if (isset($favorites)) {
+                                $movie_id = $movie['id'];
+                                // Use strict comparison to check if array_search returns a valid index (0 or greater)
+                                $heart_to_show = array_search($movie_id, array_column($favorites, 'movie_id')) !== false 
+                                    ? 'fa-solid fa-heart movie-heart liked' 
+                                    : 'fa-regular fa-heart movie-heart not-liked';
+                            } else {
                                 $heart_to_show = 'fa-regular fa-heart movie-heart not-liked';
                             }
                             ?>
-                            <li class="movie-collection-list-item" data-movie_id="<?php echo $movie['id']; ?>">   
+                            <li class="movie-collection-list-item" data-movie_id="<?php echo $movie['id']; ?>" data-movie_title="<?php echo $movie['title']; ?>" data-movie_poster="<?php echo $movie['backdrop_path']; ?>">   
                                 <img src="https://image.tmdb.org/t/p/original/<?php echo $movie['backdrop_path'] ?>">
                                 <h4><?php echo $movie['title']; ?></h4>  
                                 <i class="<?php echo $heart_to_show; ?>"></i>

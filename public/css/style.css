@@ -3,10 +3,60 @@ html {
   width: 100vw;
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 html body {
   margin: 0px;
   padding: 0px;
+  position: relative;
+}
+html body .favorite-list-wrapper {
+  width: 240px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+html body .favorite-list-wrapper .favorite-button {
+  position: relative;
+  z-index: 99;
+  background-color: #124E66;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 5px 30px -5px rgba(0, 0, 0, 0.5);
+}
+html body .favorite-list-wrapper .favorite-button:hover {
+  cursor: pointer;
+}
+html body .favorite-list-wrapper .favorite-list {
+  display: none;
+  border-radius: 15px;
+  list-style: none;
+  background-color: #124E66;
+  padding: 20px;
+  position: relative;
+  z-index: 999;
+  box-shadow: 0 5px 30px -5px rgba(0, 0, 0, 0.5);
+}
+html body .favorite-list-wrapper .favorite-list .favorite-list-item {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+html body .favorite-list-wrapper .favorite-list .favorite-list-item img {
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+}
+html body .favorite-list-wrapper .favorite-list .favorite-list-item p {
+  width: calc(100% - 20px);
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 html body .go-back {
   top: 50px;
@@ -22,6 +72,8 @@ html body .go-back {
 }
 html body h1, html body h2, html body h3, html body h4, html body p, html body a {
   color: #c5c3c4;
+  margin: 0;
+  padding: 0;
 }
 html body .movie-collection-preview {
   overflow: hidden;
@@ -57,12 +109,12 @@ html body .movie-collection-preview .movie-collection-preview-content h2 {
   text-shadow: 2px 2px #212A31;
   font-size: 50px;
 }
-html body .movie-collection-preview .movie-collection-preview-content p {
-  margin: 0;
-  margin-bottom: 50px;
+html body .movie-collection-preview .movie-collection-preview-content p.movie-tagline {
+  margin-bottom: 35px;
   font-size: 14px;
 }
-html body .movie-collection-preview .movie-collection-preview-content .movie-details {
+html body .movie-collection-preview .movie-collection-preview-content a.movie-details {
+  border-radius: 15px;
   border: none;
   background-color: #124E66;
   color: #c5c3c4;
@@ -70,6 +122,11 @@ html body .movie-collection-preview .movie-collection-preview-content .movie-det
   font-weight: bold;
   font-size: 16px;
   text-decoration: none;
+  transition: all ease-in-out 0.3s;
+}
+html body .movie-collection-preview .movie-collection-preview-content a.movie-details:hover {
+  background-color: #c5c3c4;
+  color: #124E66;
 }
 html body .movie-collection-wrapper {
   margin-top: 25px;
@@ -82,10 +139,12 @@ html body .movie-collection-wrapper {
 html body .movie-collection-wrapper .movie-collection-section {
   border-bottom: 1px solid #c5c3c4;
   padding-bottom: 20px;
+  margin-bottom: 40px;
 }
 html body .movie-collection-wrapper .movie-collection-section h3 {
   font-size: 25px;
   color: #c5c3c4;
+  margin-bottom: 10px;
 }
 html body .movie-collection-wrapper .movie-collection-section .scroll-container {
   position: relative;
@@ -200,6 +259,7 @@ html body .movie-collection-single-wrapper .single-movie-hero {
 }
 html body .movie-collection-single-wrapper img.single-movie-poster {
   width: 30vw;
+  border-radius: 15px;
   height: auto;
   box-shadow: 0 5px 30px -5px rgba(0, 0, 0, 0.5);
 }
@@ -214,6 +274,9 @@ html body .movie-collection-single-wrapper .single-movie-content .single-movie-i
 }
 html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper .single-movie-info-left {
   width: 50%;
+}
+html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper .single-movie-info-left h1, html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper .single-movie-info-left h3, html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper .single-movie-info-left p {
+  margin: 10px 0px;
 }
 html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper .single-movie-info-left .single-movie-desc {
   padding-right: 20px;
