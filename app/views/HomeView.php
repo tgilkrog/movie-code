@@ -5,6 +5,7 @@
 <head>
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="./public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
@@ -15,7 +16,6 @@
             <h2><?php echo $hero['title']; ?></h2>
             <div>
                 <p class="movie-tagline"><?php echo substr($hero['overview'], 0, 150 - 3) . '...'; ?></p>
-                <p class="movie-score"><?php echo 'Userscore: ' . round($hero['vote_average'], 2); ?> / 10</p>
                 <a class="movie-details" href="/Wexo-code/movie/<?php echo $hero['id']; ?>">More Details</a>
             </div>
         </div>
@@ -29,9 +29,18 @@
                     <button class="scroll-arrow left-arrow">&lt;</button>
                     <ul class="movie-collection-list">
                         <?php foreach ($mov['results'] as $movie): ?>
-                            <li class="movie-collection-list-item" data-movie_id="<?php echo $movie['id']; ?>">
+                            <?php 
+                            if(isset($favorites)){
+                                $heart_to_show = in_array($movie['id'], $favorites) ? 'fa-solid fa-heart movie-heart liked' : 'fa-regular fa-heart movie-heart not-liked';
+                            }
+                            else{
+                                $heart_to_show = 'fa-regular fa-heart movie-heart not-liked';
+                            }
+                            ?>
+                            <li class="movie-collection-list-item" data-movie_id="<?php echo $movie['id']; ?>">   
                                 <img src="https://image.tmdb.org/t/p/original/<?php echo $movie['backdrop_path'] ?>">
-                                <h4><?php echo $movie['title']; ?></h4>
+                                <h4><?php echo $movie['title']; ?></h4>  
+                                <i class="<?php echo $heart_to_show; ?>"></i>
                             </li>
                         <?php endforeach; ?>
                     </ul>

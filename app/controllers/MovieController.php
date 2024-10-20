@@ -3,29 +3,27 @@
 require_once __DIR__ . '/../models/MovieModel.php';
 require_once __DIR__ . '/../controllers/VideoController.php';
 require_once __DIR__ . '/../controllers/PeopleController.php';
+require_once __DIR__ . '/../controllers/SessionController.php';
 
 class MovieController
 {
     private $model;
     private $videoController;
     private $peopleController;
+    private $sessionController;
 
     public function __construct()
     {
         $this->model = new MovieModel();
         $this->videoController = new VideoController();
         $this->peopleController = new PeopleController();
+        $this->sessionController = new SessionController();
     }
 
     public function view($id) {
         $movie = $this->model->getMovieById($id);
         $videos = $this->videoController->get_videos_by_movie_id($id);
         $people = $this->peopleController->get_people_by_movie_id($id);
-
-        foreach($people['cast'] as $cast){
-            $ryan = $cast;
-            break;
-        }
 
         foreach($videos['results'] as $video){
             if ($video['type'] === 'Trailer') {
@@ -62,6 +60,7 @@ class MovieController
         ];
 
         $hero = $this->model->getMovieById(64690);
+        $favorites = $this->sessionController->getSessionData();
         require_once 'app/views/HomeView.php';
     }
 

@@ -14,39 +14,50 @@
         <div><img class="single-movie-poster" src="https://image.tmdb.org/t/p/original/<?php echo $movie['poster_path'] ?>"></div>
 
         <div class="single-movie-content">
-            <h1><?php echo $movie['title']; ?></h1>
-            <div>
-                <p>
-                    <?php
-                    foreach ($movie['genres'] as $genre) {
-                        echo $genre['name'] . ', ';
-                    }  ?>
-                </p>
+            <div class="single-movie-info-wrapper">
+                <div class="single-movie-info-left">
+                    <h1><?php echo $movie['title']; ?></h1>
+                    <div>
+                        <p>
+                            <?php
+                            foreach ($movie['genres'] as $genre) {
+                                echo $genre['name'] . ', ';
+                            }  ?>
+                        </p>
+                    </div>
+                    <h3>Release Date: <?php echo $movie['release_date']; ?></h3>
+                    <p class="single-movie-desc"><?php echo $movie['overview']; ?></p>
+                </div>
+
+                <div class="single-movie-info-right">
+                    <div class="video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/<?php echo $firstTrailer['key']; ?>"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
             </div>
-            <h3>Release Date: <?php echo $movie['release_date']; ?></h3>
-            <p class="single-movie-desc"><?php echo $movie['overview']; ?></p>
+
+
             <h4>Cast</h4>
-            <div><ul class="cast-list">
-            <?php foreach($people['cast'] as $key => $person){
-                echo '<li class="list-item">';
-                echo '<img src="https://image.tmdb.org/t/p/original/'. $person['profile_path'] .'" />';
-                echo '<p>'.$person['name'].'</p>';
-                echo '</li>';
+            <div>
+                <ul class="cast-list">
+                    <?php foreach ($people['cast'] as $key => $person) {
+                        echo '<li class="list-item">';
+                        echo '<img src="https://image.tmdb.org/t/p/original/' . $person['profile_path'] . '" />';
+                        echo '<p>' . $person['name'] . '</p>';
+                        echo '</li>';
 
-                if($key === 9){
-                    break;
-                }
-            } ?>
-            </ul>
+                        if ($key === 9) {
+                            break;
+                        }
+                    } ?>
+                </ul>
             </div>
 
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/<?php echo $firstTrailer['key']; ?>"
-                    frameborder="0"
-                    allowfullscreen>
-                </iframe>
-            </div>
+
         </div>
     </div>
 </body>

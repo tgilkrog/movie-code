@@ -35,7 +35,10 @@ jQuery(document).ready(function($){
         $.ajax({
             url: '/Wexo-code/ajax/fetchMovieById', // Point to the new AJAX route
             type: 'POST',
-            data: { movie_id: movieId }, // Send movie ID to the server
+            data: { 
+                action: 'get_movie_by_id',
+                movie_id: movieId 
+            }, // Send movie ID to the server
             success: function(data) {
                 const movie = JSON.parse(data); // Parse JSON response
                 if (movie.error) {
@@ -66,5 +69,36 @@ jQuery(document).ready(function($){
                 console.error("AJAX Error: " + status + error);
             }
         });
-    })
+    });
+
+    $('.movie-heart').on('click', function(){
+        var movieId = $(this).parent().attr('data-movie_id');
+        var $heartIcon = $(this);
+
+        $heartIcon.fadeOut(200, function() {
+            // Send the AJAX request while the icon is faded out
+            $.ajax({
+                url: '/Wexo-code/ajax/fetchMovieById', 
+                type: 'POST',
+                data: { 
+                    action: 'save_to_favorites',
+                    movie_id: movieId 
+                }, 
+                success: function(data) {
+                    // Toggle the icon class when the AJAX call is successful
+                    if ($heartIcon.hasClass('fa-solid')) {
+                        // If it's already liked, remove it from the favorites
+                        $heartIcon.removeClass('fa-solid fa-heart liked').addClass('fa-regular fa-heart not-liked');
+                    } else {
+                        // If it's not liked, add it to the favorites
+                        $heartIcon.removeClass('fa-regular fa-heart not-liked').addClass('fa-solid fa-heart liked');
+                    }
+                    
+                    // Fade the icon back in after changing the class
+                    $heartIcon.fadeIn(200);
+                }
+            });
+        });
+    });
+
 });
