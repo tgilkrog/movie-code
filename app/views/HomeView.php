@@ -41,13 +41,14 @@
     </div>
 
     <div class="movie-collection-wrapper">
-        <?php foreach ($movies as $key => $mov) { ?>
+        <?php foreach ($movies as $genre) { ?>
             <div class="movie-collection-section">
-                <h3><?php echo $key; ?></h3>
+                <!-- Display the genre name dynamically -->
+                <h3><a href="/Wexo-code/genre/<?php echo $genre['genre_id']; ?>"><?php echo $genre['genre_name']; ?></a></h3>
                 <div class="scroll-container">
                     <button class="scroll-arrow left-arrow">&lt;</button>
                     <ul class="movie-collection-list">
-                        <?php foreach ($mov['results'] as $movie) { ?>
+                        <?php foreach ($genre['movies']['results'] as $movie) { ?>
                             <?php
                             if (isset($favorites)) {
                                 $movie_id = $movie['id'];
@@ -60,7 +61,7 @@
                             }
                             ?>
                             <li class="movie-collection-list-item" data-movie_id="<?php echo $movie['id']; ?>" data-movie_title="<?php echo $movie['title']; ?>" data-movie_poster="<?php echo $movie['backdrop_path']; ?>">
-                                <img src="https://image.tmdb.org/t/p/original/<?php echo $movie['backdrop_path'] ?>">
+                                <img src="https://image.tmdb.org/t/p/original/<?php echo $movie['backdrop_path']; ?>">
                                 <h4><?php echo $movie['title']; ?></h4>
                                 <i class="<?php echo $heart_to_show; ?>"></i>
                             </li>
@@ -71,6 +72,7 @@
             </div>
         <?php } ?>
     </div>
+
     <script src="./public/js/script.js"></script>
 </body>
 

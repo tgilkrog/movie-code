@@ -6,16 +6,13 @@ require_once __DIR__ . '/../controllers/SessionController.php';
 $movieController = new MovieController();
 $sessionController = new SessionController();
 
-// Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Check if the 'action' field is present in the POST data
     if (isset($_POST['action'])) {
 
         // Switch statement to handle different 'action' cases
         switch ($_POST['action']) {
 
-                // Case 1: fet a movie by its id
+                // get a movie by its id
             case 'get_movie_by_id':
                 // Check if there is a movie_id
                 if (isset($_POST['movie_id'])) {
@@ -27,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 break;
 
-                // Case 2: Save movie to favorite list
+                // Save movie to favorite list
             case 'save_to_favorites':
                 if (isset($_POST['movie_id'])) {
                     // Call the controller function to save data in php session
@@ -37,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 break;
 
-                // Case 3: Get the favorite list from the session
+                // Get the favorite list from the session
             case 'get_favorite_list':
                 echo json_encode($sessionController->getSessionData());
                 break;

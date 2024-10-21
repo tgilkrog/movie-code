@@ -42,9 +42,11 @@
                     <div>
                         <p>
                             <?php
+                            $genreNames = [];
                             foreach ($movie['genres'] as $genre) {
-                                echo $genre['name'] . ', ';
-                            }  ?>
+                                $genreNames[] = $genre['name'];
+                            }
+                            echo implode(', ', $genreNames);  ?>
                         </p>
                     </div>
                     <h3>Release Date: <?php echo $movie['release_date']; ?></h3>

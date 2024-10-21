@@ -64,7 +64,7 @@ html body .favorite-list-wrapper .favorite-list .favorite-list-item p {
 }
 html body .go-back {
   top: 50px;
-  margin-left: 50px;
+  left: 50px;
   position: absolute;
   background-color: #17252A;
   padding: 20px 25px;
@@ -274,7 +274,7 @@ html body .movie-collection-single-wrapper .single-movie-content {
 }
 html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper {
   display: flex;
-  padding-right: 25px;
+  padding-right: 45px;
 }
 html body .movie-collection-single-wrapper .single-movie-content .single-movie-info-wrapper .single-movie-info-left {
   width: 50%;
@@ -345,14 +345,52 @@ html body .movie-collection-single-wrapper .cast-list li p {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-html body .genre-movie-wrapper .genre-movien-list {
-  list-sttyle: none;
+html body .genre-movie-wrapper {
+  padding: 100px 0px;
+}
+html body .genre-movie-wrapper h1 {
+  text-align: center;
+  font-size: 50px;
+}
+html body .genre-movie-wrapper .genre-movie-list {
+  margin-top: 0px;
+  list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-html body .genre-movie-wrapper .genre-movien-list .genre-movie-list-item {
+html body .genre-movie-wrapper .genre-movie-list .genre-movie-list-item {
+  position: relative;
   margin: 20px;
 }
-html body .genre-movie-wrapper .genre-movien-list .genre-movie-list-item img {
+html body .genre-movie-wrapper .genre-movie-list .genre-movie-list-item img {
   width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+html body .genre-movie-wrapper .genre-movie-list .genre-movie-list-item h4 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 20px);
+  margin: 0;
+  padding: 10px;
+  color: #F3FFFF;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-size: 16px;
+  white-space: normal;
+  overflow: visible;
+  word-wrap: break-word;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+html body .genre-movie-wrapper .genre-movie-list .genre-movie-list-item .movie-heart {
+  color: #b7a2c9;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  padding: 10px 10px 8px 10px;
+  border-radius: 100px;
+  background-color: rgba(23, 37, 42, 0.8);
 }/*# sourceMappingURL=style.css.map */
