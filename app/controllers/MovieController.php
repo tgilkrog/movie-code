@@ -40,6 +40,14 @@ class MovieController
         }
     }
 
+    public function getMoviesByGenre($id){
+        $movies = $this->model->getMoviesByGenre($id);
+
+        if($movies){
+            require_once 'app/views/GenreView.php';
+        }
+    }
+
     public function showMoviesFrontPage()
     {
         $action = $this->model->getMoviesByGenre( 28);
@@ -69,8 +77,10 @@ class MovieController
         require_once 'app/views/HomeView.php';
     }
 
+    //This function gets a movie by its id with Ajax
     public function ajaxFetchMovieById()
     {
+        //check if movieid isset
         if (isset($_POST['movie_id'])) {
             $movie_id = intval($_POST['movie_id']);
             $movie = $this->model->getMovieById($movie_id);

@@ -13,10 +13,15 @@ class Router
                 break;
 
             case 'movie':
-                error_log("Movie path matched.");
                 require_once 'app/controllers/MovieController.php';
                 $controller = new MovieController();
                 $controller->single_movie_view($id); 
+                break;
+
+            case 'genre':
+                require_once 'app/controllers/MovieController.php';
+                $controller = new MovieController();
+                $controller->getMoviesByGenre($id); 
                 break;
 
             case 'ajax/movieajax':

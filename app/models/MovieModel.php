@@ -8,6 +8,7 @@ class MovieModel
     public function getMovieById($movieId)
     {
         $url = $this->apiUrl . 'movie' . '/' . $movieId .  '?api_key=' . $this->apiKey;
+        
         return $this->makeApiRequest($url);
     }
 
@@ -15,7 +16,6 @@ class MovieModel
     {
         $url = $this->apiUrl . 'discover/movie' . '?api_key=' . $this->apiKey . '&with_genres=' . $genre_id . '&include_adult=false';
 
-        // Make the API request
         return $this->makeApiRequest($url);
     }
 

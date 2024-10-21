@@ -39,10 +39,13 @@ html
                 border-radius: 15px
                 list-style: none
                 background-color: #124E66
-                padding: 20px
+                padding: 10px
                 position: relative
                 z-index: 999
                 box-shadow: 0 5px 30px -5px rgba(0,0,0,0.5)
+
+                .favorite-list-item:last-child
+                    margin-bottom: 0px !important
 
                 .favorite-list-item
                     overflow: hidden
@@ -55,6 +58,7 @@ html
                         border-radius: 15px
 
                     p
+                        text-align: center
                         width: calc(100% - 20px)
                         padding: 10px
                         background-color: rgba(0, 0, 0, 0.6)
@@ -339,3 +343,14 @@ html
                         word-wrap: break-word
                         border-bottom-left-radius: 15px
                         border-bottom-right-radius: 15px
+
+        .genre-movie-wrapper
+            .genre-movien-list
+                list-sttyle: none
+                display: grid
+                grid-template-columns: 1fr 1fr 1fr 1fr
+
+                .genre-movie-list-item
+                    margin: 20px
+                    img 
+                        width: 100%
